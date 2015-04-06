@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Services</string>
+
+    <!-- GENERAL -->
+    <string name="start_btn_caption">Start</string>
+
+    <!-- INTENT SERVICE -->
+    <string name="intentservice_title">IntentService</string>
+    <string name="success_msg">Finished successfully</string>
+    <string name="failed_msg">Failed</string>
+    <string name="started_msg">Service started</string>
+    <string name="cancel_btn_caption">Cancel</string>
+    <string name="startedservice_title">Started Service</string>
+
+</resources>
