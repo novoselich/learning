@@ -117,8 +117,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
     private void onServiceStarted() {
         mStartBtn.setEnabled(false);
         mDuration.setEnabled(false);
-        //No way to stop IntentService until it finished
-//        mCancelBtn.setEnabled(true);
+        mProgress.setProgress(0);
         mProgress.setVisibility(View.VISIBLE);
     }
     private void onServiceCompleted() {
