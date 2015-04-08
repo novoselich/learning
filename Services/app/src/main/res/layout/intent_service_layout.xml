@@ -21,7 +21,7 @@
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/progressbar_heigth"
+            android:layout_height="@dimen/progressbar_height"
             android:paddingLeft="@dimen/padding_normal"
             android:paddingRight="@dimen/padding_normal"
             android:visibility="invisible"
@@ -43,6 +43,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
             android:orientation="vertical">
 
 

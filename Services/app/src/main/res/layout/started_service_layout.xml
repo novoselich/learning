@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="@dimen/padding_small"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
@@ -15,24 +17,70 @@
             android:layout_height="wrap_content"
             android:text="@string/startedservice_title"/>
 
-        <ProgressBar
+        <LinearLayout
+            android:id="@+id/progresses_container"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/progressbar_heigth"
-            android:visibility="invisible"
-            style="@android:style/Widget.ProgressBar.Horizontal"/>
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:orientation="vertical">
+
+
+            </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/start_startedServiceBtn"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/start_btn_caption"/>
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/start_startedServiceBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_btn_caption"/>
+            <Button
+                android:id="@+id/stop_startedServiceBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/stop_btn_caption"/>
+
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+
+        <SeekBar
+            android:id="@+id/startedService_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20000"
+            android:progress="5000"
+            />
+
+        <TextView
+            android:id="@+id/startedService_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/startedService_queued"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     </LinearLayout>
 

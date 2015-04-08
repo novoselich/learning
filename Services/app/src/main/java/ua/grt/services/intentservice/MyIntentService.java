@@ -18,7 +18,7 @@ public class MyIntentService extends IntentService {
 
     public static final String RESULT = "result";
     public static final String PROGRESS = "progress";
-    public static final String NOTIFICATION = "ua.grt.services";
+    public static final String NOTIFICATION = "ua.grt.services.intentservice";
     public static final String DELAY = "delay";
 
     public MyIntentService(){

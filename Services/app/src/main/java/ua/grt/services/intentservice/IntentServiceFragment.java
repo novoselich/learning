@@ -24,7 +24,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
     private Context context;
 
     Button mStartBtn;
-    TextView mStatusTxt;
+    TextView mStatusText;
     SeekBar mDuration;
     ProgressBar mProgress;
 
@@ -35,25 +35,18 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
         public void onReceive(Context context, Intent intent) {
             Bundle bundle = intent.getExtras();
             if(bundle != null){
-                // Service finished
                 if(bundle.containsKey(MyIntentService.RESULT)) {
+                    // Service finished
                     onServiceCompleted();
 
                     int resultCode = bundle.getInt(MyIntentService.RESULT);
                     if (resultCode == Activity.RESULT_OK) {
-                        Toast.makeText(context,
-                                getString(R.string.success_msg),
-                                Toast.LENGTH_LONG).show();
-                        mStatusTxt.setText(getString(R.string.success_msg));
+                        mStatusText.setText(getString(R.string.success_msg));
                     } else {
-                        Toast.makeText(context,
-                                getString(R.string.failed_msg),
-                                Toast.LENGTH_LONG).show();
-                        mStatusTxt.setText(getString(R.string.failed_msg));
+                        mStatusText.setText(getString(R.string.failed_msg));
                     }
-                }
-                // service still working
-                else {
+                } else {
+                    // service still working
                     int progress = bundle.getInt(MyIntentService.PROGRESS);
                     mProgress.setProgress(progress);
                 }
@@ -75,7 +68,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
         serviceIntent = new Intent(context, MyIntentService.class);
 
         mStartBtn = (Button) view.findViewById(R.id.start_intentService_btn);
-        mStatusTxt = (TextView) view.findViewById(R.id.intentService_status);
+        mStatusText = (TextView) view.findViewById(R.id.intentService_status);
         mDuration = (SeekBar) view.findViewById(R.id.intentService_duration);
         mProgress = (ProgressBar) view.findViewById(R.id.progress);
 
@@ -106,7 +99,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
                 serviceIntent.putExtra(MyIntentService.DELAY, mDuration.getProgress());
                 context.startService(serviceIntent);
 
-                mStatusTxt.setText(getString(R.string.started_msg));
+                mStatusText.setText(getString(R.string.started_msg));
                 onServiceStarted();
                 break;
 

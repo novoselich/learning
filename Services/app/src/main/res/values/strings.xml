@@ -13,5 +13,8 @@
     <string name="started_msg">Service started</string>
     <string name="cancel_btn_caption">Cancel</string>
     <string name="startedservice_title">Started Service</string>
+    <string name="pid_caption">PID:%1$d</string>
+    <string name="queued_msg">%1$d tasks in queue</string>
+    <string name="stop_btn_caption">STOP</string>
 
 </resources>
