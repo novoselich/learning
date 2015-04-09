@@ -19,6 +19,8 @@
     <string name="startedservice_title">Started Service</string>
     <string name="pid_caption">PID:%1$d</string>
     <string name="queued_msg">%1$d tasks in queue</string>
-    <string name="new_thread_chbx_caption">run in separate thread</string>
+
+    <!-- STARTED ASYNC SERVICE -->
+    <string name="startedasyncservice_title">Started Async\nService</string>
 
 </resources>

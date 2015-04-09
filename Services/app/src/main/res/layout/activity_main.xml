@@ -24,4 +24,15 @@
         android:layout_height="wrap_content"
         android:name="ua.grt.services.startedservice.StartedServiceFragment"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/separator"/>
+
+    <fragment
+        android:id="@+id/fragment_started_async_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="ua.grt.services.startedasyncservice.StartedAsyncServiceFragment"/>
+
 </LinearLayout>

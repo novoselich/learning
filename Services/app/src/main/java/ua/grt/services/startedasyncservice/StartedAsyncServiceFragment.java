@@ -1,4 +1,4 @@
-package ua.grt.services.startedservice;
+package ua.grt.services.startedasyncservice;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -21,20 +21,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ua.grt.services.R;
+import ua.grt.services.startedservice.MyStartedService;
 
-public class StartedServiceFragment extends Fragment implements View.OnClickListener {
+public class StartedAsyncServiceFragment extends Fragment implements View.OnClickListener {
 
     private Context context;
 
     private Button mStartBtn;
     private Button mStopBtn;
     private TextView mStatusText;
-    private TextView mQueuedText;
     private SeekBar mDuration;
     private LinearLayout mProgressesContainer;
     private Map<Integer, ProgressBar> mProgresses;
 
-    private int mQueuedProcesses;
     private boolean mIsInterrupted;
 
     private Intent mServiceIntent;
@@ -47,8 +46,8 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
             }
             Bundle bundle = intent.getExtras();
             if(bundle != null){
-                if (bundle.containsKey(MyStartedService.PROGRESS)) {
-                    // service still working
+                if(bundle.containsKey(MyStartedService.PROGRESS)){
+                    //service still working
                     int progress = bundle.getInt(MyStartedService.PROGRESS);
                     int pid = bundle.getInt(MyStartedService.PID);
                     if(mProgresses.containsKey(pid)){
@@ -60,13 +59,6 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
                         mProgresses.put(pid, pb);
                         mProgressesContainer.addView(v);
                         pb.setProgress(progress);
-                        mQueuedProcesses--;
-                        if(mQueuedProcesses == 0){
-                            mQueuedText.setText("");
-                        }else {
-                            mQueuedText.setText(getString(R.string.queued_msg, mQueuedProcesses));
-                        }
-
                     }
                 } else {
                     //Service finished
@@ -83,7 +75,6 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
         }
     };
 
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -93,32 +84,28 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.started_service_layout, null);
+        View view = inflater.inflate(R.layout.started_async_service_layout,null,false);
 
-        mServiceIntent = new Intent(context, MyStartedService.class);
+        mServiceIntent = new Intent(context, MyStartedAsyncService.class);
 
-        mStartBtn = (Button) view.findViewById(R.id.start_startedServiceBtn);
-        mStopBtn = (Button) view.findViewById(R.id.stop_startedServiceBtn);
-        mStatusText = (TextView) view.findViewById(R.id.startedService_status);
-        mQueuedText = (TextView) view.findViewById(R.id.startedService_queued);
-        mDuration = (SeekBar) view.findViewById(R.id.startedService_duration);
+        mStartBtn = (Button) view.findViewById(R.id.start_startedAsyncServiceBtn);
+        mStopBtn = (Button) view.findViewById(R.id.stop_startedAsyncServiceBtnServiceBtn);
+        mStatusText = (TextView) view.findViewById(R.id.startedAsyncService_status);
+        mDuration = (SeekBar) view.findViewById(R.id.startedAsyncService_duration);
         mProgressesContainer = (LinearLayout) view.findViewById(R.id.progresses_container);
 
         mProgresses = new HashMap<>();
-        mQueuedProcesses = 0;
 
         mStartBtn.setOnClickListener(this);
         mStopBtn.setOnClickListener(this);
 
         return view;
-
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
-        context.registerReceiver(receiver, new IntentFilter(MyStartedService.NOTIFICATION));
+        context.registerReceiver(receiver, new IntentFilter(MyStartedAsyncService.NOTIFICATION));
     }
 
     @Override
@@ -129,34 +116,27 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
-        switch (v.getId()){
-            case R.id.start_startedServiceBtn:
+        switch (v.getId()) {
+            case R.id.start_startedAsyncServiceBtn:
                 mIsInterrupted = false;
                 mServiceIntent.putExtra(MyStartedService.DELAY, mDuration.getProgress());
                 context.startService(mServiceIntent);
-                mQueuedProcesses++;
-                mQueuedText.setText(getString(R.string.queued_msg, mQueuedProcesses));
                 mStopBtn.setEnabled(true);
                 mStatusText.setText(getString(R.string.started_msg));
                 break;
-            case R.id.stop_startedServiceBtn:
+            case R.id.stop_startedAsyncServiceBtnServiceBtn:
                 mIsInterrupted = true;
                 context.stopService(mServiceIntent);
                 onServiceCompleted();
                 mStatusText.setText(getString(R.string.interrupted_msg));
                 break;
-
         }
     }
-
 
     private void onServiceCompleted() {
 
         mProgressesContainer.removeAllViews();
         mProgresses.clear();
-        mQueuedProcesses = 0;
-        mQueuedText.setText("");
         mStopBtn.setEnabled(false);
     }
 }
