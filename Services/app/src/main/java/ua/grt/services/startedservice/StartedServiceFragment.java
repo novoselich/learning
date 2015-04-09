@@ -144,7 +144,7 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
                 mIsInterrupted = true;
                 context.stopService(serviceIntent);
                 onServiceCompleted();
-                mStatusText.setText(getString(R.string.failed_msg));
+                mStatusText.setText(getString(R.string.interrupted_msg));
                 break;
 
         }

@@ -5,16 +5,20 @@
 
     <!-- GENERAL -->
     <string name="start_btn_caption">Start</string>
-
-    <!-- INTENT SERVICE -->
-    <string name="intentservice_title">IntentService</string>
+    <string name="stop_btn_caption">STOP</string>
+    <string name="interrupted_msg">interrupted</string>
     <string name="success_msg">Finished successfully</string>
     <string name="failed_msg">Failed</string>
     <string name="started_msg">Service started</string>
     <string name="cancel_btn_caption">Cancel</string>
+
+    <!-- INTENT SERVICE -->
+    <string name="intentservice_title">IntentService</string>
+
+    <!-- STARTED SERVICE -->
     <string name="startedservice_title">Started Service</string>
     <string name="pid_caption">PID:%1$d</string>
     <string name="queued_msg">%1$d tasks in queue</string>
-    <string name="stop_btn_caption">STOP</string>
+    <string name="new_thread_chbx_caption">run in separate thread</string>
 
 </resources>
