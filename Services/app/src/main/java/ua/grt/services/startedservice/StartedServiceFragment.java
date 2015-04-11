@@ -35,25 +35,21 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
     private Map<Integer, ProgressBar> mProgresses;
 
     private int mQueuedProcesses;
-    private boolean mIsInterrupted;
 
     private Intent mServiceIntent;
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(mIsInterrupted){
-                return;
-            }
             Bundle bundle = intent.getExtras();
             if(bundle != null){
-                if (bundle.containsKey(MyStartedService.PROGRESS)) {
+                if (bundle.getInt(MyStartedService.PROGRESS)>=0 ) {
                     // service still working
                     int progress = bundle.getInt(MyStartedService.PROGRESS);
                     int pid = bundle.getInt(MyStartedService.PID);
                     if(mProgresses.containsKey(pid)){
                         mProgresses.get(pid).setProgress(progress);
-                    } else {
+                    } else if(mQueuedProcesses >0) {
                         LinearLayout v = (LinearLayout)getActivity().getLayoutInflater().inflate(R.layout.service_progress,null,false);
                         ((TextView)v.findViewById(R.id.pid)).setText(getString(R.string.pid_caption, pid));
                         ProgressBar pb = (ProgressBar)v.findViewById(R.id.progress);
@@ -132,7 +128,6 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
 
         switch (v.getId()){
             case R.id.start_startedServiceBtn:
-                mIsInterrupted = false;
                 mServiceIntent.putExtra(MyStartedService.DELAY, mDuration.getProgress());
                 context.startService(mServiceIntent);
                 mQueuedProcesses++;
@@ -141,10 +136,7 @@ public class StartedServiceFragment extends Fragment implements View.OnClickList
                 mStatusText.setText(getString(R.string.started_msg));
                 break;
             case R.id.stop_startedServiceBtn:
-                mIsInterrupted = true;
                 context.stopService(mServiceIntent);
-                onServiceCompleted();
-                mStatusText.setText(getString(R.string.interrupted_msg));
                 break;
 
         }

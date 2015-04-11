@@ -128,7 +128,7 @@ public class StartedAsyncServiceFragment extends Fragment implements View.OnClic
                 mIsInterrupted = true;
                 context.stopService(mServiceIntent);
                 onServiceCompleted();
-                mStatusText.setText(getString(R.string.interrupted_msg));
+//                mStatusText.setText(getString(R.string.interrupted_msg));
                 break;
         }
     }

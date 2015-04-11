@@ -6,7 +6,6 @@
     <!-- GENERAL -->
     <string name="start_btn_caption">Start</string>
     <string name="stop_btn_caption">STOP</string>
-    <string name="interrupted_msg">interrupted</string>
     <string name="success_msg">Finished successfully</string>
     <string name="failed_msg">Failed</string>
     <string name="started_msg">Service started</string>

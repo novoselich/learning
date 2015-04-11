@@ -5,7 +5,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.*;
 import android.os.Process;
-import android.widget.Toast;
 
 public class MyStartedService extends Service {
 
@@ -24,25 +23,34 @@ public class MyStartedService extends Service {
 
     //Handler that receives messages from the thread
     private final class ServiceHandler extends Handler{
+        private boolean quit;
         public ServiceHandler(Looper looper){
             super(looper);
         }
 
+        public void quit(){
+            quit = true;
+        };
+
         @Override
         public void handleMessage(Message msg) {
+            quit = false;
             mResult = Activity.RESULT_CANCELED;
             long delay = msg.arg2;
             long startTime = System.currentTimeMillis();
             long endTime = startTime + delay;
-            while (System.currentTimeMillis() < endTime) {
+            while (System.currentTimeMillis() < endTime ) {
                 synchronized (this) {
+                    if(quit){
+                        return;
+                    }
                     try {
                         wait(STEP);
                     } catch (Exception e) {
                     }
+                    int progress = (int) (((System.currentTimeMillis()-startTime)/(float)delay)*100);
+                    publishProgress(msg.arg1, progress);
                 }
-                int progress = (int) (((System.currentTimeMillis()-startTime)/(float)delay)*100);
-                publishProgress(msg.arg1, progress);
             }
 
             mResult = Activity.RESULT_OK;
@@ -82,7 +90,7 @@ public class MyStartedService extends Service {
     @Override
     public void onDestroy() {
         mThread.quit();
-        mServiceLooper.quit();
+        mServiceHandler.quit();
         publishResults();
     }
 
@@ -95,6 +103,7 @@ public class MyStartedService extends Service {
 
     private void publishResults(){
         Intent intent = new Intent(NOTIFICATION);
+        intent.putExtra(PROGRESS, -1);
         intent.putExtra(RESULT, mResult);
         sendBroadcast(intent);
     }

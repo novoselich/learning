@@ -1,38 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+     android:layout_height="wrap_content">
 
-    <fragment
-        android:id="@+id/fragment_intent_service"
-        android:layout_width="match_parent"
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:name="ua.grt.services.intentservice.IntentServiceFragment"
-        tools:layout="@layout/intent_service_layout" />
-
-    <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/separator"/>
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/fragment_started_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="ua.grt.services.startedservice.StartedServiceFragment"/>
+        <fragment
+            android:id="@+id/fragment_intent_service"
+            android:name="ua.grt.services.intentservice.IntentServiceFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/intent_service_layout" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/separator"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator" />
 
-    <fragment
-        android:id="@+id/fragment_started_async_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="ua.grt.services.startedasyncservice.StartedAsyncServiceFragment"/>
+        <fragment
+            android:id="@+id/fragment_started_service"
+            android:name="ua.grt.services.startedservice.StartedServiceFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator" />
+
+        <fragment
+            android:id="@+id/fragment_started_async_service"
+            android:name="ua.grt.services.startedasyncservice.StartedAsyncServiceFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>
