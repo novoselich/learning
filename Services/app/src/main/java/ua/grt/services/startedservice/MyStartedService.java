@@ -10,11 +10,11 @@ public class MyStartedService extends Service {
 
     private static final int STEP = 20;
 
-    public static final String RESULT = "result";
-    public static final String PROGRESS = "progress";
-    public static final String PID = "pid";
-    public static final String NOTIFICATION = "ua.grt.services.startedservice";
-    public static final String DELAY = "delay";
+    static final String RESULT = "result";
+    static final String PROGRESS = "progress";
+    static final String PID = "pid";
+    static final String NOTIFICATION = "ua.grt.services.startedservice";
+    static final String DELAY = "delay";
 
     private int mResult;
     private Looper mServiceLooper;
@@ -22,15 +22,18 @@ public class MyStartedService extends Service {
     private HandlerThread mThread;
 
     //Handler that receives messages from the thread
-    private final class ServiceHandler extends Handler{
+    private final class ServiceHandler extends Handler {
         private boolean quit;
-        public ServiceHandler(Looper looper){
+
+        public ServiceHandler(Looper looper) {
             super(looper);
         }
 
-        public void quit(){
+        public void quit() {
             quit = true;
-        };
+        }
+
+        ;
 
         @Override
         public void handleMessage(Message msg) {
@@ -39,22 +42,24 @@ public class MyStartedService extends Service {
             long delay = msg.arg2;
             long startTime = System.currentTimeMillis();
             long endTime = startTime + delay;
-            while (System.currentTimeMillis() < endTime ) {
+            while (System.currentTimeMillis() < endTime) {
                 synchronized (this) {
-                    if(quit){
+                    if (quit) {
                         return;
                     }
                     try {
                         wait(STEP);
                     } catch (Exception e) {
                     }
-                    int progress = (int) (((System.currentTimeMillis()-startTime)/(float)delay)*100);
+                    int progress = (int) (((System.currentTimeMillis() - startTime) / (float) delay) * 100);
                     publishProgress(msg.arg1, progress);
                 }
             }
 
-            mResult = Activity.RESULT_OK;
-            stopSelf(msg.arg1);
+            synchronized (MyStartedService.this) {
+                mResult = Activity.RESULT_OK;
+                stopSelf(msg.arg1);
+            }
         }
     }
 
@@ -81,7 +86,7 @@ public class MyStartedService extends Service {
 
         Message msg = mServiceHandler.obtainMessage();
         msg.arg1 = startId;
-        msg.arg2 = intent.getExtras().getInt(DELAY,5000);
+        msg.arg2 = intent.getExtras().getInt(DELAY, 5000);
         mServiceHandler.sendMessage(msg);
 
         return START_NOT_STICKY;
@@ -101,7 +106,7 @@ public class MyStartedService extends Service {
         sendBroadcast(intent);
     }
 
-    private void publishResults(){
+    private void publishResults() {
         Intent intent = new Intent(NOTIFICATION);
         intent.putExtra(PROGRESS, -1);
         intent.putExtra(RESULT, mResult);

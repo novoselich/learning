@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ua.grt.services.R;
-import ua.grt.services.startedservice.MyStartedService;
 
 public class StartedAsyncServiceFragment extends Fragment implements View.OnClickListener {
 
@@ -34,28 +33,24 @@ public class StartedAsyncServiceFragment extends Fragment implements View.OnClic
     private LinearLayout mProgressesContainer;
     private Map<Integer, ProgressBar> mProgresses;
 
-    private boolean mIsInterrupted;
 
     private Intent mServiceIntent;
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(mIsInterrupted){
-                return;
-            }
             Bundle bundle = intent.getExtras();
-            if(bundle != null){
-                if(bundle.containsKey(MyStartedService.PROGRESS)){
+            if (bundle != null) {
+                if (!bundle.getBoolean(MyStartedAsyncService.FINISHED)) {
                     //service still working
-                    int progress = bundle.getInt(MyStartedService.PROGRESS);
-                    int pid = bundle.getInt(MyStartedService.PID);
-                    if(mProgresses.containsKey(pid)){
+                    int progress = bundle.getInt(MyStartedAsyncService.PROGRESS);
+                    int pid = bundle.getInt(MyStartedAsyncService.PID);
+                    if (mProgresses.containsKey(pid)) {
                         mProgresses.get(pid).setProgress(progress);
                     } else {
-                        LinearLayout v = (LinearLayout)getActivity().getLayoutInflater().inflate(R.layout.service_progress,null,false);
-                        ((TextView)v.findViewById(R.id.pid)).setText(getString(R.string.pid_caption, pid));
-                        ProgressBar pb = (ProgressBar)v.findViewById(R.id.progress);
+                        LinearLayout v = (LinearLayout) getActivity().getLayoutInflater().inflate(R.layout.service_progress, null, false);
+                        ((TextView) v.findViewById(R.id.pid)).setText(getString(R.string.pid_caption, pid));
+                        ProgressBar pb = (ProgressBar) v.findViewById(R.id.progress);
                         mProgresses.put(pid, pb);
                         mProgressesContainer.addView(v);
                         pb.setProgress(progress);
@@ -64,8 +59,8 @@ public class StartedAsyncServiceFragment extends Fragment implements View.OnClic
                     //Service finished
                     onServiceCompleted();
 
-                    int resultCode = bundle.getInt(MyStartedService.RESULT);
-                    if(resultCode == Activity.RESULT_OK){
+                    int resultCode = bundle.getInt(MyStartedAsyncService.RESULT);
+                    if (resultCode == Activity.RESULT_OK) {
                         mStatusText.setText(getString(R.string.success_msg));
                     } else {
                         mStatusText.setText(getString(R.string.failed_msg));
@@ -84,7 +79,7 @@ public class StartedAsyncServiceFragment extends Fragment implements View.OnClic
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.started_async_service_layout,null,false);
+        View view = inflater.inflate(R.layout.started_async_service_layout, null, false);
 
         mServiceIntent = new Intent(context, MyStartedAsyncService.class);
 
@@ -118,17 +113,13 @@ public class StartedAsyncServiceFragment extends Fragment implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.start_startedAsyncServiceBtn:
-                mIsInterrupted = false;
-                mServiceIntent.putExtra(MyStartedService.DELAY, mDuration.getProgress());
+                mServiceIntent.putExtra(MyStartedAsyncService.DELAY, mDuration.getProgress());
                 context.startService(mServiceIntent);
                 mStopBtn.setEnabled(true);
                 mStatusText.setText(getString(R.string.started_msg));
                 break;
             case R.id.stop_startedAsyncServiceBtnServiceBtn:
-                mIsInterrupted = true;
                 context.stopService(mServiceIntent);
-                onServiceCompleted();
-//                mStatusText.setText(getString(R.string.interrupted_msg));
                 break;
         }
     }
