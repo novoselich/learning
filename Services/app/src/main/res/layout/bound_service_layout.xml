@@ -40,24 +40,23 @@
                 android:id="@+id/bind_unbind_boundService_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/bind_btn_caption"/>
+                android:text="@string/bind_btn_caption" />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/padding_normal"
-            android:paddingRight="@dimen/padding_normal"
-            android:orientation="vertical">
+            android:paddingRight="@dimen/padding_normal">
 
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@android:style/Widget.ProgressBar.Large.Inverse"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
 
-                <ProgressBar
-                    android:id="@+id/progress"
-                    style="@android:style/Widget.ProgressBar.Large.Inverse"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:visibility="gone" />
+                android:visibility="visible" />
 
             <SeekBar
                 android:id="@+id/boundService_indicator_size"

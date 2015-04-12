@@ -25,5 +25,8 @@
     <!-- BOUND SERVICE -->
     <string name="bound_service_title">Bound service</string>
     <string name="bind_btn_caption">BIND</string>
+    <string name="bound_msg">Bound to service</string>
+    <string name="started_and_bound_msg">Service started and bound to</string>
+    <string name="unbind_btn_caption">UNBIND</string>
 
 </resources>

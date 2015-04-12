@@ -23,7 +23,7 @@
         <service android:name=".intentservice.MyIntentService"/>
         <service android:name=".startedservice.MyStartedService"/>
         <service android:name=".startedasyncservice.MyStartedAsyncService"/>
-
+        <service android:name=".boundservice.MyBoundService"/>
     </application>
 
 </manifest>
