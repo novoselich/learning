@@ -22,4 +22,8 @@
     <!-- STARTED ASYNC SERVICE -->
     <string name="startedasyncservice_title">Started Async\nService</string>
 
+    <!-- BOUND SERVICE -->
+    <string name="bound_service_title">Bound service</string>
+    <string name="bind_btn_caption">BIND</string>
+
 </resources>

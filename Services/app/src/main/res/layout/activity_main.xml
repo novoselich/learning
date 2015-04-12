@@ -29,7 +29,8 @@
             android:id="@+id/fragment_started_service"
             android:name="ua.grt.services.startedservice.StartedServiceFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout="@layout/started_service_layout" />
 
         <View
             android:layout_width="match_parent"
@@ -40,7 +41,20 @@
             android:id="@+id/fragment_started_async_service"
             android:name="ua.grt.services.startedasyncservice.StartedAsyncServiceFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout="@layout/started_async_service_layout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator" />
+
+        <fragment
+            android:id="@+id/fragment_bound_service"
+            android:name="ua.grt.services.boundservice.BoundServiceFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/bound_service_layout" />
 
     </LinearLayout>
 </ScrollView>
