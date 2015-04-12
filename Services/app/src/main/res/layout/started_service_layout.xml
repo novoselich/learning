@@ -43,12 +43,12 @@
 
             <Button
                 android:id="@+id/start_startedServiceBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/start_btn_caption"/>
             <Button
                 android:id="@+id/stop_startedServiceBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="@string/stop_btn_caption"/>
