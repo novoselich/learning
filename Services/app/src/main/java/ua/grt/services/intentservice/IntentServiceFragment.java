@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
     TextView mStatusText;
     SeekBar mDuration;
     ProgressBar mProgress;
+    CheckBox mForeground;
 
     Intent serviceIntent;
 
@@ -71,6 +73,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
         mStatusText = (TextView) view.findViewById(R.id.intentService_status);
         mDuration = (SeekBar) view.findViewById(R.id.intentService_duration);
         mProgress = (ProgressBar) view.findViewById(R.id.progress);
+        mForeground = (CheckBox) view.findViewById(R.id.foreground_chbx);
 
         mStartBtn.setOnClickListener(this);
 
@@ -97,6 +100,7 @@ public class IntentServiceFragment extends Fragment implements View.OnClickListe
         switch (v.getId()){
             case R.id.start_intentService_btn:
                 serviceIntent.putExtra(MyIntentService.DELAY, mDuration.getProgress());
+                serviceIntent.putExtra(MyIntentService.FOREGROUND, mForeground.isChecked());
                 context.startService(serviceIntent);
 
                 mStatusText.setText(getString(R.string.started_msg));

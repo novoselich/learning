@@ -56,6 +56,12 @@
                 android:progress="5000"
                 />
 
+            <CheckBox
+                android:id="@+id/foreground_chbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/foreground_chbx_caption"/>
+
             <TextView
                 android:id="@+id/intentService_status"
                 android:layout_width="wrap_content"

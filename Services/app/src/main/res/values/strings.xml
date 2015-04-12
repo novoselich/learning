@@ -28,5 +28,7 @@
     <string name="bound_msg">Bound to service</string>
     <string name="started_and_bound_msg">Service started and bound to</string>
     <string name="unbind_btn_caption">UNBIND</string>
+    <string name="foreground_chbx_caption">in foreground</string>
+    <string name="notification_message">Service started in foreground</string>
 
 </resources>
