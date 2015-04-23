@@ -3,9 +3,11 @@ package ua.grt.services.intentservice;
 import android.app.Activity;
 import android.app.IntentService;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Environment;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import java.io.File;
@@ -35,13 +37,15 @@ public class MyIntentService extends IntentService {
     protected void onHandleIntent(Intent intent){
 
         if(intent.getExtras().getBoolean(FOREGROUND)){
-            Notification notification = new Notification(R.drawable.ic_launcher, getText(R.string.notification_message),
-                    System.currentTimeMillis());
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext())
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentTitle(getText(R.string.app_name))
+                    .setContentText(getText(R.string.notification_message));
+
             Intent notificationIntent = new Intent(this, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-            notification.setLatestEventInfo(this, getText(R.string.app_name),
-                    getText(R.string.notification_message), pendingIntent);
-            startForeground(1,notification);
+            notification.setContentIntent(pendingIntent);
+            startForeground(1,notification.build());
         }
 
         long delay = intent.getExtras().getInt(DELAY,5000);
