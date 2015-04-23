@@ -33,8 +33,6 @@ public class MyStartedService extends Service {
             quit = true;
         }
 
-        ;
-
         @Override
         public void handleMessage(Message msg) {
             quit = false;

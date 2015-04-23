@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".intentservice.MyIntentService"/>
+        <service android:name=".intentservice.MyIntentService"
+            android:process=":separate_process"/>
         <service android:name=".startedservice.MyStartedService"/>
         <service android:name=".startedasyncservice.MyStartedAsyncService"/>
         <service android:name=".boundservice.MyBoundService"/>
