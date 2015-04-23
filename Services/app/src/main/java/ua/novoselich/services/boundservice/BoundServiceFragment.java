@@ -1,4 +1,4 @@
-package ua.grt.services.boundservice;
+package ua.novoselich.services.boundservice;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -20,7 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import ua.grt.services.R;
+import ua.novoselich.services.R;
 
 public class BoundServiceFragment extends Fragment implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 

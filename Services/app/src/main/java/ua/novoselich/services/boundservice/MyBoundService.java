@@ -1,4 +1,4 @@
-package ua.grt.services.boundservice;
+package ua.novoselich.services.boundservice;
 
 import android.app.Service;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.IBinder;
 
 public class MyBoundService extends Service {
 
-    static final String NOTIFICATION = "ua.grt.services.boundservice";
+    static final String NOTIFICATION = "ua.novoselich.services.boundservice";
     static final String WORKING = "working";
     static final String VALUE = "value";
 

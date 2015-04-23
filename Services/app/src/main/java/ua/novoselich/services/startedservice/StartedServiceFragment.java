@@ -1,4 +1,4 @@
-package ua.grt.services.startedservice;
+package ua.novoselich.services.startedservice;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -20,7 +20,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Map;
 
-import ua.grt.services.R;
+import ua.novoselich.services.R;
 
 public class StartedServiceFragment extends Fragment implements View.OnClickListener {
 

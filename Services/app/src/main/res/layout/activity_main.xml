@@ -15,7 +15,7 @@
 
         <fragment
             android:id="@+id/fragment_intent_service"
-            android:name="ua.grt.services.intentservice.IntentServiceFragment"
+            android:name="ua.novoselich.services.intentservice.IntentServiceFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/intent_service_layout" />
@@ -27,7 +27,7 @@
 
         <fragment
             android:id="@+id/fragment_started_service"
-            android:name="ua.grt.services.startedservice.StartedServiceFragment"
+            android:name="ua.novoselich.services.startedservice.StartedServiceFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/started_service_layout" />
@@ -39,7 +39,7 @@
 
         <fragment
             android:id="@+id/fragment_started_async_service"
-            android:name="ua.grt.services.startedasyncservice.StartedAsyncServiceFragment"
+            android:name="ua.novoselich.services.startedasyncservice.StartedAsyncServiceFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/started_async_service_layout" />
@@ -51,7 +51,7 @@
 
         <fragment
             android:id="@+id/fragment_bound_service"
-            android:name="ua.grt.services.boundservice.BoundServiceFragment"
+            android:name="ua.novoselich.services.boundservice.BoundServiceFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/bound_service_layout" />

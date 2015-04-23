@@ -1,4 +1,4 @@
-package ua.grt.services;
+package ua.novoselich.services;
 
 import android.app.Activity;
 import android.os.Bundle;

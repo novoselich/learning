@@ -1,4 +1,4 @@
-package ua.grt.services.foregroundservice;
+package ua.novoselich.services.foregroundservice;
 
 import android.app.Service;
 import android.content.Intent;

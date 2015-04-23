@@ -1,4 +1,4 @@
-package ua.grt.services.startedasyncservice;
+package ua.novoselich.services.startedasyncservice;
 
 import android.app.Activity;
 import android.app.Service;
@@ -15,7 +15,7 @@ public class MyStartedAsyncService extends Service {
     static final String RESULT = "result";
     static final String PROGRESS = "progress";
     static final String PID = "pid";
-    static final String NOTIFICATION = "ua.grt.services.startedasyncservice";
+    static final String NOTIFICATION = "ua.novoselich.services.startedasyncservice";
     static final String DELAY = "delay";
     static final String FINISHED = "finished";
 

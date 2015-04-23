@@ -1,4 +1,4 @@
-package ua.grt.services.intentservice;
+package ua.novoselich.services.intentservice;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -16,9 +16,8 @@ import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import ua.grt.services.R;
+import ua.novoselich.services.R;
 
 public class IntentServiceFragment extends Fragment implements View.OnClickListener {
 

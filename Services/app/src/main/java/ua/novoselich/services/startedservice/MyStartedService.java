@@ -1,4 +1,4 @@
-package ua.grt.services.startedservice;
+package ua.novoselich.services.startedservice;
 
 import android.app.Activity;
 import android.app.Service;
@@ -13,7 +13,7 @@ public class MyStartedService extends Service {
     static final String RESULT = "result";
     static final String PROGRESS = "progress";
     static final String PID = "pid";
-    static final String NOTIFICATION = "ua.grt.services.startedservice";
+    static final String NOTIFICATION = "ua.novoselich.services.startedservice";
     static final String DELAY = "delay";
 
     private int mResult;

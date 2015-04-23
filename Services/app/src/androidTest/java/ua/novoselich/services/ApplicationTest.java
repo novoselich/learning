@@ -1,4 +1,4 @@
-package ua.grt.services;
+package ua.novoselich.services;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,23 +1,13 @@
-package ua.grt.services.intentservice;
+package ua.novoselich.services.intentservice;
 
 import android.app.Activity;
 import android.app.IntentService;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
-import ua.grt.services.MainActivity;
-import ua.grt.services.R;
+import ua.novoselich.services.MainActivity;
+import ua.novoselich.services.R;
 
 public class MyIntentService extends IntentService {
 
@@ -26,7 +16,7 @@ public class MyIntentService extends IntentService {
      static final String RESULT = "result";
      static final String PROGRESS = "progress";
     static final String FOREGROUND = "foreground";
-     static final String NOTIFICATION = "ua.grt.services.intentservice";
+     static final String NOTIFICATION = "ua.novoselich.services.intentservice";
      static final String DELAY = "delay";
 
     public MyIntentService(){
