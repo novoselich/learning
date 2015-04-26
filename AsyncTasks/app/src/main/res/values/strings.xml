@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">AsyncTasks</string>
-    <string name="start_btn_caption">Run aAsyncTask</string>
-    <string name="number_input_hint">Enter numbers count</string>
-</resources>

@@ -1,0 +1,28 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <fragment
+        android:id="@+id/async_task_fragment01"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:name="ua.novoselich.asynctask.AsyncTaskFragment"
+        tools:layout="@layout/fragment_layout" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#5CB522"/>
+
+    <fragment
+        android:id="@+id/async_task_fragment02"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:name="ua.novoselich.asynctask.AsyncTaskFragment"
+        tools:layout="@layout/fragment_layout" />
+
+</LinearLayout>

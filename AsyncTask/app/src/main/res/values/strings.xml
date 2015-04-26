@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AsyncTasks</string>
+    <string name="start_btn_caption">Run AsyncTask</string>
+    <string name="number_input_hint">Enter numbers count</string>
+    <string name="done_msg">computing finished</string>
+    <string name="inprogress_msg">computing...</string>
+</resources>
