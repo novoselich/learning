@@ -1,0 +1,3 @@
+task firstTask << {
+	println '@#$ Behold the power of Gradle!! $#@'
+}

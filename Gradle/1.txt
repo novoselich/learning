@@ -1,0 +1,171 @@
+task firstTask << {
+	println '@#$ Behold the power of Gradle!! $#@'
+}
+
+-------------------------
+
+defaultTasks 'clean', 'compile'
+
+task clean << {
+    println 'Executing the clean task'
+}
+
+task compile << {
+    println 'Executing the compile task'
+}
+
+task other(dependsOn: 'compile') << {
+    println "I'm not a default task!"
+}
+
+-------------------------
+
+// gradle o
+// gradle -q other
+// gradle -b WalterWhite.gradle
+// gradle tasks
+
+-----------------------
+
+// gradle wrapper
+
+-----------------------
+
+// >> settings.gradle
+
+rootProject.name='ua.grt.gradle.preview'
+
+// >> build.gradle 
+
+description ="""
+This is a great description 
+
+of an awesome project named ${project.name} """
+
+//gradle project
+
+------------------------
+
+apply plugin: 'java'
+
+//gradle tasks
+
+-------------------------
+
+repositories {
+    mavenCentral()
+}
+
+------------------------
+
+dependencies {
+ compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'
+}
+
+compile 'org.apache.commons:commons-lang3:3.3.2'
+
+testCompile group: 'junit', name: 'junit', version: '4.+'
+
+
+----------------------
+
+apply plugin: 'eclipse' 
+
+//gradle eclipse 
+
+-------------------------
+
+//'android'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0-rc4'
+    }
+}
+
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+}
+
+//local.properties
+
+sdk.dir=/usr/java/adk
+
+------------------------
+
+
+
+--------------
+// >> settings.gradle
+
+include ":spongebob", ":patrick", ":squidvard"
+// >> build.gradle
+allprojects {
+  task hello << { task -> println "I'm $task.project.name" }
+}
+
+subprojects {
+    task batman<< { task -> println "Why do you wanna kill me?" }
+}
+//gradle -q hello
+//gradle -q patrick:batman
+----------------------------
+//Spongebob Project specific stuff
+project(':spongebob') {
+}
+
+//Patrick Project specific stuff
+project(':patrick') {
+}
+
+//Squidvard Project specific stuff
+project(':squidvard') {
+task mumble<< { println "I hate everybody" }
+}
+---------------------------
+subprojects {
+  apply plugin: "java"
+  repositories {
+      mavenCentral()
+  }
+
+ dependencies {        
+    testCompile "junit:junit:4+"
+ }
+}
+
+//Patrick Project specific stuff 
+project(':patrick') { 
+  dependencies {
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+  }
+} 
+
+//Spongebob Project specific stuff 
+project(':spongebob') { 
+   dependencies {
+      compile project(':patrick')
+      compile 'org.apache.commons:commons-lang3:3.3.2'
+      compile 'log4j:log4j:1.2.17'
+   }
+} 
+
+//Squidvard' Project specific stuff 
+
+project(':squidvard') { 
+   dependencies {
+      compile project(':patrick'), project(':spongebob')
+      compile 'log4j:log4j:1.2.17'
+   }
+}
+--------------------
+
+
+

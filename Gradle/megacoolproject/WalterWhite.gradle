@@ -1,0 +1,5 @@
+defaultTasks 'doAction'
+
+task doAction << {
+	println "Lets Cook!"
+}

@@ -1,0 +1,9 @@
+1. Can I write my own plugin
+2. How can I see android plugin sources
+3. can I run 3d-party command(my own program) inside the task
+4. how install task works
+5. What is the Google android plugin (is it wrapper on standart one?)
+6. What is the behaviour with more than 1 repository included?
+7. Is it a problem that task depends on two tasks which depends one on other?
+8. Build native code in gradle
+
