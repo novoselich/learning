@@ -1,22 +1,11 @@
-buildscript {
-    repositories {
-        jcenter()
-        maven {url "file://${projectDir}/../plugin/build/m2repo" }
-    }
-    dependencies {
-        classpath 'ua.novoselich:hello:0.1.0'
-    }
-}
-
 apply plugin: 'com.android.application'
-apply plugin: 'hello'
 
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.example.oleg.myapplication"
+        applicationId "ua.novoselich.myapplication"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -28,24 +17,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
-task ('runCommand') << {
-    println "ls".execute().text
+task 'A' << {
+    println 'A'
+}
+task ('B', dependsOn: A) << {
+    println 'B'
+}
+task ('C', dependsOn: A) << {
+    println 'C'
+}
+task ('D') << {
+    println 'D'
 }
 
-hello {
-    myName = "Walter White"
-}
-
+D.dependsOn(C)
+D.dependsOn(B)
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.1'
 }
-
-
-
-//******* PLUGIN *********
-
