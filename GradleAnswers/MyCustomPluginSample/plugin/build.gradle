@@ -1,0 +1,26 @@
+apply plugin: 'groovy'
+apply plugin: "maven"
+
+archivesBaseName = "hello"
+group = 'ua.novoselich'
+version = '0.1.0'
+
+repositories {
+    mavenCentral ()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:0.12.+'
+}
+
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository (url: "file:///$buildDir/m2repo")
+        }
+    }
+}
